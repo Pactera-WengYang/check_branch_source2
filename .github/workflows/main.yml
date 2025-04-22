@@ -13,8 +13,9 @@ jobs:
     steps:
       - name: Check if the PR targets main from develop
         run: |
-          if [ "${{ github.event.pull_request.base.ref }}" == "main" ] && [ "${{ github.event.pull_request.head.ref }}" != "develop" ]; then
+          if [ "${{ github.base_ref }}" == "main" ] && [ "${{ github.event.pull_request.head.ref }}" != "develop" ]; then
             echo "Pull request not from develop to main branch"
+            echo "${{ github.base_ref }}"
             exit 1
           else
             echo "Pull request from develop to main branch"
