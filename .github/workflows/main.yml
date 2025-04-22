@@ -15,6 +15,7 @@ jobs:
         run: |
           if [ "${{ github.base_ref }}" == "main" ] && [ "${{ github.event.pull_request.head.ref }}" != "develop" ]; then
             echo "Pull request not from develop to main branch"
+            echo "${{ github.base_ref }}"
             exit 1
           else
             echo "Pull request from develop to main branch"
